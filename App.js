@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
 
 export default function App() {
   return (
@@ -39,6 +39,30 @@ export default function App() {
           <Text>Eye Color: Green</Text>
         </View>
       </View>
+
+      <View style = {styles.login}>
+        <Text style = {styles.loginTitle}>
+          Sign In
+        </Text>
+        <View>
+          <TextInput styles = {styles.username} placeholder='Username'/>
+          <TextInput styles = {styles.password} placeholder='Password'/>
+          <Button title='Log In'/>
+        </View>
+      </View>
+      <View style = {styles.login}>
+        <Text style = {styles.loginTitle}>
+          Log Out
+        </Text>
+        <View>
+          <Text style = {styles.logoutMsg}>
+            Are you sure you want to log out?</Text>
+          <Button style= {styles.yesBtn} title='Yes'/>
+          <Text></Text>
+          <Button title='No'/>
+        </View>
+      </View>
+
     </View>
   );
 }
@@ -59,7 +83,6 @@ const styles = StyleSheet.create({
   navImage: {
     width: 40,
     height: 40,
-    
   },
   logo:{
     fontSize: 40
@@ -88,5 +111,22 @@ const styles = StyleSheet.create({
   },
   profileTitle:{
     fontSize: 30,
+  },
+  login: {
+    border: '1px solid #000',
+  }, 
+  loginTitle: {
+    textAlign: 'center',
+    border: '1px solid #000',
+    fontSize: 30,
+  }, 
+  yesBtn: {
+    marginBottom: 90,
+  },
+  logoutMsg: {
+    textAlign: 'center',
+    marginBottom: 30,
+    marginTop: 30,
+    fontSize: 17,
   }
 })
