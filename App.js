@@ -4,7 +4,7 @@ export default function App() {
   return (
     <View style = {styles.container}>
       
-      <View style = {styles.nav}>
+      {/* <View style = {styles.nav}>
       <Image style = {styles.navImage}
         source={require('./assets/hamburger.png')}
       />
@@ -38,7 +38,7 @@ export default function App() {
           <Text>Weight: 75.4</Text>
           <Text>Eye Color: Green</Text>
         </View>
-      </View>
+      </View> */}
 
       <View style = {styles.login}>
         <Text style = {styles.loginTitle}>
@@ -62,7 +62,28 @@ export default function App() {
           <Button title='No'/>
         </View>
       </View>
+      <View>
+        <Text style = {styles.loginTitle}>
+          Create Staff
+        </Text>
+        <View>
+          <Text>Staff Number</Text>
+          <TextInput styles = {styles.username} placeholder='1234'/>
 
+          <Text>Staff Name</Text>
+          <TextInput styles = {styles.password} placeholder='John Doe'/>
+
+          <Text>Staff Email</Text>
+          <TextInput styles = {styles.username} placeholder='john@example.com'/>
+          
+          <Text>Department</Text>
+          <TextInput styles = {styles.password} placeholder='Department'/>
+
+          <Text>Salary</Text>
+          <TextInput styles = {styles.username} placeholder='60000'/>
+          <Button title='Create Staff'/>
+        </View>
+      </View>
     </View>
   );
 }
@@ -71,7 +92,7 @@ const styles = StyleSheet.create({
   container : {
     backgroundColor: 'white',
     padding: 30,
-    flex: 1,
+    
   }, 
  
   nav: {
