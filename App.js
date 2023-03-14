@@ -1,10 +1,22 @@
-import { StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, Button, ScrollView } from 'react-native';
+import { useState } from 'react';
 
 export default function App() {
+  const [value, setValue] = useState('')
+  const [dataPoints, setDataPoints] = useState([])
+
+  function handleOnChangeText(textEntered){
+    setValue(textEntered)
+  }
+  function handlePressBtn(){
+    console.log(value)
+    setDataPoints(currentData => [...currentData, value])
+  }
+  console.log(dataPoints)
   return (
     <View style = {styles.container}>
       
-      {/* <View style = {styles.nav}>
+      <View style = {styles.nav}>
       <Image style = {styles.navImage}
         source={require('./assets/hamburger.png')}
       />
@@ -18,6 +30,7 @@ export default function App() {
           source={require('./assets/zam.png')}
           />      
       </View>
+      <ScrollView>
       <View style = {styles.welcome}>
         <Text style = {styles.welcomeMsg}>Welcome Stephen Amimo,
         </Text>
@@ -38,7 +51,7 @@ export default function App() {
           <Text>Weight: 75.4</Text>
           <Text>Eye Color: Green</Text>
         </View>
-      </View> */}
+      </View>
 
       <View style = {styles.login}>
         <Text style = {styles.loginTitle}>
@@ -57,33 +70,74 @@ export default function App() {
         <View>
           <Text style = {styles.logoutMsg}>
             Are you sure you want to log out?</Text>
-          <Button style= {styles.yesBtn} title='Yes'/>
-          <Text></Text>
-          <Button title='No'/>
+            <View style = {styles.rowBtns}>
+              <Button style= {styles.yesBtn} title='Yes' color={'red'}/>
+              <Text></Text>
+              <Button style= {styles.yesBtn} title='No' color={'green'}/>
+            </View>
+          
         </View>
       </View>
-      <View>
+      <View style = {styles.staffSection}>
+      
+      <View style = {styles.table}>
+      {
+          dataPoints.map((item, index) =>
+          <Text key={`item${index}`}>{item}</Text>)
+      }
+
+          <View style= {styles.tableHead}>
+              <Text>Staff No.</Text>
+              <Text>Staff Name</Text>
+              <Text>Staff Email</Text>
+              <Text>Department</Text>
+              <Text>Salary</Text>
+          </View>
+          <View style= {styles.tableBody}>
+              <Text>ZAAC001</Text>
+              <Text>John Doe</Text>
+              <Text>jd@zamara.co.k</Text>
+              <Text>ICT</Text>
+              <Text>50,000</Text>
+          </View>
+          <View style= {styles.tableBody}>
+              <Text>ZARIB001</Text>
+              <Text>Mary Jane</Text>
+              <Text>Smj@zamara.co.ke</Text>
+              <Text>ICT</Text>
+              <Text>40000</Text>
+          </View>
+          <View style= {styles.tableBody}>
+              <Text>ZAAC002</Text>
+              <Text>Chris Maina</Text>
+              <Text>cc@zamara.co.ke</Text>
+              <Text>HR</Text>
+              <Text>60,000</Text>
+          </View>
+      </View>
+        
         <Text style = {styles.loginTitle}>
           Create Staff
         </Text>
         <View>
           <Text>Staff Number</Text>
-          <TextInput styles = {styles.username} placeholder='1234'/>
+          <TextInput onChangeText = {handleOnChangeText} styles = {styles.username} placeholder='1234'/>
 
           <Text>Staff Name</Text>
-          <TextInput styles = {styles.password} placeholder='John Doe'/>
+          <TextInput onChangeText = {handleOnChangeText} styles = {styles.username} placeholder='John Doe'/>
 
           <Text>Staff Email</Text>
-          <TextInput styles = {styles.username} placeholder='john@example.com'/>
+          <TextInput onChangeText = {handleOnChangeText} styles = {styles.username} placeholder='john@example.com'/>
           
           <Text>Department</Text>
-          <TextInput styles = {styles.password} placeholder='Department'/>
+          <TextInput onChangeText = {handleOnChangeText} styles = {styles.username} placeholder='Finance'/>
 
           <Text>Salary</Text>
-          <TextInput styles = {styles.username} placeholder='60000'/>
-          <Button title='Create Staff'/>
+          <TextInput onChangeText = {handleOnChangeText} styles = {styles.username} placeholder='60000'/>
+          <Button onPress = {handlePressBtn} title='Create Staff'/>
         </View>
       </View>
+      </ScrollView>
     </View>
   );
 }
@@ -91,8 +145,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container : {
     backgroundColor: 'white',
-    padding: 30,
-    
+    paddingVertical: 30,
+    paddingHorizontal: 15,
+    flex : 1
   }, 
  
   nav: {
@@ -133,21 +188,44 @@ const styles = StyleSheet.create({
   profileTitle:{
     fontSize: 30,
   },
+  
   login: {
-    border: '1px solid #000',
+    marginTop: 20,
   }, 
   loginTitle: {
     textAlign: 'center',
-    border: '1px solid #000',
     fontSize: 30,
   }, 
   yesBtn: {
-    marginBottom: 90,
+    marginBottom: 20,
+    width: '400px',
+    backgroundColor: 'red',
   },
   logoutMsg: {
     textAlign: 'center',
     marginBottom: 30,
     marginTop: 30,
     fontSize: 17,
+  },
+  rowBtns: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    flex: 0
+  }, 
+  table:{
+    borderWidth: 1
+  },
+  tableHead: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    fontSize: 20, 
+    backgroundColor: "#3bcd6b"
+  },
+  tableBody: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    fontSize: 20, 
+    borderWidth: 1
+
   }
 })
