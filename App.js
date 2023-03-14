@@ -1,3 +1,6 @@
+import React from 'react';
+import { SafeAreaView } from 'react-native';
+import ContinentView from './ContinentView';
 import { StyleSheet, Text, View, Image, TextInput, Button, ScrollView } from 'react-native';
 import { useState } from 'react';
 
@@ -15,8 +18,7 @@ export default function App() {
   console.log(dataPoints)
   return (
     <View style = {styles.container}>
-      
-      <View style = {styles.nav}>
+       <View style = {styles.nav}>
       <Image style = {styles.navImage}
         source={require('./assets/hamburger.png')}
       />
@@ -51,9 +53,9 @@ export default function App() {
           <Text>Weight: 75.4</Text>
           <Text>Eye Color: Green</Text>
         </View>
-      </View>
+      </View> 
 
-      <View style = {styles.login}>
+       <View style = {styles.login}>
         <Text style = {styles.loginTitle}>
           Sign In
         </Text>
@@ -62,10 +64,10 @@ export default function App() {
           <TextInput styles = {styles.password} placeholder='Password'/>
           <Button title='Log In'/>
         </View>
-      </View>
-      <View style = {styles.login}>
+      </View> 
+       <View style = {styles.login}>
         <Text style = {styles.loginTitle}>
-          Log Out
+          Log O ut
         </Text>
         <View>
           <Text style = {styles.logoutMsg}>
@@ -78,14 +80,13 @@ export default function App() {
           
         </View>
       </View>
-      <View style = {styles.staffSection}>
+
       
       <View style = {styles.table}>
       {
           dataPoints.map((item, index) =>
           <Text key={`item${index}`}>{item}</Text>)
       }
-
           <View style= {styles.tableHead}>
               <Text>Staff No.</Text>
               <Text>Staff Name</Text>
@@ -98,7 +99,7 @@ export default function App() {
               <Text>John Doe</Text>
               <Text>jd@zamara.co.k</Text>
               <Text>ICT</Text>
-              <Text>50,000</Text>
+              <Text>50000</Text>
           </View>
           <View style= {styles.tableBody}>
               <Text>ZARIB001</Text>
@@ -112,33 +113,41 @@ export default function App() {
               <Text>Chris Maina</Text>
               <Text>cc@zamara.co.ke</Text>
               <Text>HR</Text>
-              <Text>60,000</Text>
+              <Text>60000</Text>
           </View>
       </View>
-        
+      
+        <View style = {styles.createForm}>
         <Text style = {styles.loginTitle}>
           Create Staff
-        </Text>
-        <View>
-          <Text>Staff Number</Text>
-          <TextInput onChangeText = {handleOnChangeText} styles = {styles.username} placeholder='1234'/>
+         </Text>
+         <View>
+           <Text>Staff Number</Text>
+           <TextInput onChangeText = {handleOnChangeText} styles = {styles.username} placeholder='1234'/>
 
-          <Text>Staff Name</Text>
-          <TextInput onChangeText = {handleOnChangeText} styles = {styles.username} placeholder='John Doe'/>
+           <Text>Staff Name</Text>
+           <TextInput onChangeText = {handleOnChangeText} styles = {styles.username} placeholder='John Doe'/>
 
           <Text>Staff Email</Text>
           <TextInput onChangeText = {handleOnChangeText} styles = {styles.username} placeholder='john@example.com'/>
           
-          <Text>Department</Text>
-          <TextInput onChangeText = {handleOnChangeText} styles = {styles.username} placeholder='Finance'/>
+         <Text>Department</Text>
+         <TextInput onChangeText = {handleOnChangeText} styles = {styles.username} placeholder='ICT'/>
 
-          <Text>Salary</Text>
-          <TextInput onChangeText = {handleOnChangeText} styles = {styles.username} placeholder='60000'/>
-          <Button onPress = {handlePressBtn} title='Create Staff'/>
+           <Text>Salary</Text>
+           <TextInput onChangeText = {handleOnChangeText} styles = {styles.username} placeholder='60000'/>
+           <Button onPress = {handlePressBtn} title='Create Staff'/>
+         </View>
         </View>
-      </View>
-      </ScrollView>
-    </View>
+        
+
+       <SafeAreaView>
+        <ContinentView />
+     </SafeAreaView>
+
+      </ScrollView> 
+
+   </View>  
   );
 }
 
@@ -191,6 +200,8 @@ const styles = StyleSheet.create({
   
   login: {
     marginTop: 20,
+    flex: 1,
+    marginTop: 70
   }, 
   loginTitle: {
     textAlign: 'center',
@@ -213,19 +224,23 @@ const styles = StyleSheet.create({
     flex: 0
   }, 
   table:{
-    borderWidth: 1
+    borderWidth: 1,
+    marginTop: 70,
   },
   tableHead: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     fontSize: 20, 
-    backgroundColor: "#3bcd6b"
+    backgroundColor: "#3bcd6b",
   },
   tableBody: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     fontSize: 20, 
     borderWidth: 1
-
+  },
+  createForm: {
+    margin: 20,
+    marginTop: 70
   }
 })
