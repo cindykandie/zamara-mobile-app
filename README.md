@@ -146,6 +146,6 @@ I would like to thank my interviewer at Zamara Kenya for giving me a chance to d
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](./MIT) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
