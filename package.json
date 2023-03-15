@@ -9,10 +9,21 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-navigation/native": "^6.1.6",
+    "@react-navigation/stack": "^6.3.16",
+    "buffer": "^6.0.3",
     "expo": "~48.0.6",
     "expo-status-bar": "~1.4.4",
+    "is-url": "^1.2.4",
     "react": "18.2.0",
-    "react-native": "0.71.3"
+    "react-native": "0.71.3",
+    "react-native-gesture-handler": "^2.9.0",
+    "react-native-reanimated": "~2.14.4",
+    "react-native-screens": "^3.20.0",
+    "react-native-soap": "^0.0.2",
+    "react-navigation": "^4.4.4",
+    "soap": "^1.0.0",
+    "xml2js": "^0.4.23"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
