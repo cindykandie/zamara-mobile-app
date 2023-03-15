@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { SOAP } from 'react-native-soap';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  heading: {
+    padding: 20,
+    fontSize: 28,
   },
   item: {
     padding: 10,
@@ -16,42 +19,18 @@ const styles = StyleSheet.create({
 });
 
 const ContinentView = () => {
-  const [continents, setContinents] = useState([]);
-
-  useEffect(() => {
-    const request = {
-      url: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
-      method: 'ListOfContinentsByName',
-      soapAction: 'http://www.oorsprong.org/websamples.countryinfo/ListOfContinentsByName',
-      params: {},
-    };
-
-    try {
-      SOAP.request(request)
-        .then((response) => {
-          const continentList = response.ListOfContinentsByNameResult.tContinent.map((continent) => ({
-            code: continent.sCode,
-            name: continent.sName,
-          }));
-          setContinents(continentList);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
-
   return (
     <View style={styles.container}>
-      {continents.map((continent) => (
-        <Text style={styles.item} key={continent.code}>
-          {continent.code} - {continent.name}
-        </Text>
-      ))}
+        <Text style={styles.heading}>CONTINENTS</Text>
+        <Text style={styles.item}>AF - Africa</Text>
+        <Text style={styles.item}>AN - Antarctica</Text>
+        <Text style={styles.item}>AS - Asia</Text>
+        <Text style={styles.item}>EU - Europe</Text>
+        <Text style={styles.item}>NA - North America</Text>
+        <Text style={styles.item}>OC - Oceania</Text>
+        <Text style={styles.item}>SA - South America</Text>
     </View>
-  );
-};
+  )
+}
 
 export default ContinentView;
